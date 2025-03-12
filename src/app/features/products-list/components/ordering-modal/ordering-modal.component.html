@@ -1,0 +1,26 @@
+<div class="ordering-modal" cdkTrapFocus>
+  <div class="ordering-modal__list">
+    <h3>
+      Move the items in the list below, up or down, to change the order in which the products will appear in the list.
+    </h3>
+
+    <div cdkDropList class="ordering-modal__drag-list" (cdkDropListDropped)="drop($event)">
+      <div class="ordering-modal__drag-item" *ngFor="let item of items(); let i = index" cdkDrag>
+        <div class="ordering-modal__content">
+          <mat-icon>drag_indicator</mat-icon>
+          <span class="ordering-modal__text">{{ item.label }}</span>
+          <app-direction-toggle
+            [type]="item.type"
+            [direction]="item.direction"
+            [label]="item.label"
+            (directionChange)="toggleDirection(i)"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ordering-modal__actions">
+    <button mat-raised-button color="primary" (click)="applyOrder()" cdkFocusInitial>Apply Sorting</button>
+  </div>
+</div>

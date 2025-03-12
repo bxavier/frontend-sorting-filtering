@@ -1,0 +1,41 @@
+.filters {
+  background: white;
+  border-radius: 4px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &__title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__group {
+    margin-bottom: 1.5rem;
+
+    .mat-form-field {
+      width: 100%;
+      margin-right: -16px;
+    }
+
+    .mat-checkbox {
+      display: block;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    button {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<div class="company-filter">
+  <h3 class="company-filter__subtitle">Companies</h3>
+
+  <mat-form-field class="company-filter__search">
+    <mat-label>Search company</mat-label>
+    <input
+      matInput
+      [ngModel]="searchTerm$()"
+      (ngModelChange)="searchTerm$.set($event)"
+      placeholder="Enter company name"
+    />
+  </mat-form-field>
+
+  <div class="company-filter__list">
+    <mat-checkbox
+      *ngFor="let company of visibleCompanies()"
+      class="company-filter__item"
+      [checked]="isSelected(company)"
+      (change)="onCompanySelect(company, $event.checked)"
+    >
+      {{ company.name }}
+    </mat-checkbox>
+    <button
+      *ngIf="filteredCompanies().length > itemsToShow"
+      mat-button
+      class="company-filter__toggle"
+      (click)="toggleShowAll()"
+    >
+      {{ buttonText() }}
+    </button>
+  </div>
+</div>

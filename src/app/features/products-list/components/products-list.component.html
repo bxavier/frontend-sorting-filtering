@@ -1,0 +1,40 @@
+<div class="products-list">
+  <div class="products-list__header">
+    <h1 class="products-list__title">Products List</h1>
+    <div class="products-list__actions">
+      <app-ordering
+        [items]="orderingStore.productsListItems()"
+        modalTitle="Sort Products"
+        (orderingChanged)="onOrderingChanged($event)"
+      >
+        <button class="ordering__button" mat-raised-button color="primary">
+          <mat-icon>sort</mat-icon>
+          Sort
+        </button>
+      </app-ordering>
+      <button class="list-view__button" mat-raised-button color="primary">
+        <mat-icon>view_stream</mat-icon>
+        List View
+      </button>
+      <button mat-raised-button (click)="resetProducts()">
+        <mat-icon>refresh</mat-icon>
+        Refresh
+      </button>
+    </div>
+  </div>
+
+  <div class="products-list__container">
+    <aside class="products-list__sidebar">
+      <app-filters></app-filters>
+    </aside>
+
+    <main class="products-list__main">
+      <app-cards-container
+        [products]="products().products"
+        [tabs]="customTabs"
+        (deal)="handleDeal($event)"
+        (details)="handleDetails($event)"
+      ></app-cards-container>
+    </main>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="filters">
+  <h2 class="filters__title">Filters</h2>
+
+  <div class="filters__group">
+    <app-company-filter [companies]="companies"></app-company-filter>
+  </div>
+
+  <div class="filters__group">
+    <h3 class="filters__subtitle">Value</h3>
+    <mat-form-field class="filters__field">
+      <mat-label>Minimum value</mat-label>
+      <input
+        matInput
+        type="number"
+        placeholder="$ 0.00"
+        [ngModel]="filters.value.min"
+        (change)="updateMinValue($event)"
+      />
+      <span matPrefix>$&nbsp;</span>
+    </mat-form-field>
+
+    <mat-form-field class="filters__field">
+      <mat-label>Maximum value</mat-label>
+      <input
+        matInput
+        type="number"
+        placeholder="$ 0.00"
+        [ngModel]="filters.value.max"
+        (change)="updateMaxValue($event)"
+      />
+      <span matPrefix>$&nbsp;</span>
+    </mat-form-field>
+  </div>
+
+  <div class="filters__group">
+    <h3 class="filters__subtitle">Status</h3>
+    <ng-container *ngFor="let statusOption of statusOptions">
+      <mat-checkbox
+        class="filters__field"
+        [checked]="filters.status.includes(statusOption)"
+        (change)="updateStatus(statusOption, $event.checked)"
+      >
+        {{ statusOption }}
+      </mat-checkbox>
+    </ng-container>
+  </div>
+
+  <div class="filters__actions">
+    <button mat-raised-button color="primary" (click)="applyFilters()">Apply Filters</button>
+    <button mat-button (click)="clearFilters()">Clear</button>
+  </div>
+</div>

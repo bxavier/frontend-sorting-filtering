@@ -1,0 +1,20 @@
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+  <mat-tab *ngFor="let tab of tabs">
+    <ng-template mat-tab-label>
+      <div class="tab__label">
+        <div class="tab__label-text">{{ tab.label }} ({{ getFilteredProducts(tab).length }})</div>
+        <div class="tab__label-value">{{ getTabAmount(tab) | currency }}</div>
+      </div>
+    </ng-template>
+    <div class="tab__content">
+      <div class="card-container">
+        <app-product-card
+          *ngFor="let product of getFilteredProducts(tab)"
+          [product]="product"
+          (deal)="onDeal($event)"
+          (details)="onDetails($event)"
+        ></app-product-card>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

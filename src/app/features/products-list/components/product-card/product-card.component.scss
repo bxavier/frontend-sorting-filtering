@@ -1,0 +1,17 @@
+.product-card {
+  height: 100%;
+
+  mat-card-header {
+    margin-bottom: 1rem;
+  }
+
+  mat-card-content {
+    margin-bottom: 1rem;
+  }
+
+  mat-card-actions {
+    padding: 0 1rem 1rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+}

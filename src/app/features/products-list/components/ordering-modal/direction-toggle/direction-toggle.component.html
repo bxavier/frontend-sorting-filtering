@@ -1,0 +1,15 @@
+<button
+  mat-button
+  class="direction-toggle"
+  (click)="directionChange.emit()"
+  [attr.aria-label]="'Toggle ' + label + ' direction'"
+>
+  <div class="mat-button-wrapper">
+    <span class="direction-toggle__text">
+      {{ getDirectionText() }}
+    </span>
+    <mat-icon class="direction-toggle__icon" [class.direction-toggle__icon--desc]="direction === 'asc'"
+      >arrow_upward</mat-icon
+    >
+  </div>
+</button>
